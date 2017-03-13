@@ -5,6 +5,6 @@ for user in `/bin/ls /var/cpanel/users`;do
     d=`echo $f|sed -e 's/\.htaccess//'`
     grep "^php_" $f|awk '{print $2" = "$3}' > ${d}php.ini
     chown $user:$user ${d}php.ini
-    sed -i -pe 's/^php_/#php_/' $f
+    sed -i -e 's/^php_/#php_/' $f
   done
 done
