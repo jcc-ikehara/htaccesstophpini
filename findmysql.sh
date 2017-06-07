@@ -1,14 +1,21 @@
 #!/bin/sh
 
+# ファイル抽出
+# TMPFILE書式 i
+# delimiter :
+# fullpath:db_name
 TMPFILE="/tmp/mysql4tempfile.txt"
+TMPDIR="/tmp/jccmysql4tmpdir"
+
+# initialize
+rm -rf $TMPDIR
 rm -f $TMPFILE
+mkdir $TMPDIR
+
+# find
 for db in `mysqlshow |grep _|cut -d\  -f 2`;do
         user=`echo $db|cut -d_ -f1`
-        find /home/${user}/public_html -type f -print0|xargs -0 grep -Ho $db | uniq >> $TMPFILE
+        find /home/${user} -type f \( -name \*\.php -o -name \*\.html -o -name \*\.cgi -o -name \*\.htm \) -print0|xargs -0 grep -oH $db|uniq >>$TMPDIR/$db
 done
 
-for l in `cat $TMPFILE`;do
-        f=`echo $l|cut -d: -f1`
-        db=`echo $l|cut -d: -f2`
-        echo "db=$db, file is $f"
-done
+cat $TMPDIR/* > $TMPFILE
