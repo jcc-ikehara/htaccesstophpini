@@ -22,11 +22,14 @@ mysql4のサーバーのDBを見て、そのDBが書き込まれているファ�
 /tmp/jccmysql4tmpdirの下を見て、DB作成コマンドと新しいDB名、パスワードを用意するコマンド
 
 /tmp/jccmysql4tmpdir/dbcommand 
+
 mysql4用のDBとユーザ作成コマンド、コピペでmysql4サーバーにて実行
+
 /tmp/jccmysql4tmpdir/configfilelist
+
 :区切りのCSVで設定ファイルのフルパスと、新しいDB名＝新しいUser名、パスワードを記述、後ほど加工を行えるようにしてある
 
-一旦wordpressのみconfigを変更できそうなので置換した設定ファイルを標準出力に表示しているが別に分けたほうがよさそう
+一旦wordpressのみconfigを変更できそうなので置換した設定ファイルを標準出力に表示しているが別に分けたほうがよさそう→別に分けることにして一旦コメントアウト
 
 ### ToDo
 
