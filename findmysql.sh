@@ -15,7 +15,7 @@ mkdir $TMPDIR
 # find
 for db in `mysqlshow |grep _|cut -d\  -f 2`;do
         user=`echo $db|cut -d_ -f1`
-        find /home/${user} -type f \( -name \*\.php -o -name \*\.html -o -name \*\.cgi -o -name \*\.htm \) -print0|xargs -0 grep -oH $db|uniq >>$TMPDIR/$db
+        find /home/${user} -type f \( -name \*\.php -o -name \*\.html -o -name \*\.cgi -o \*\.pl -o \*\.ini -o -name \*\.htm \) -print0|xargs -0 grep -oH $db|uniq >>$TMPDIR/$db
 done
 
 cat $TMPDIR/* > $TMPFILE
